@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import InputField from './InputField';
 
 const MovieForm = ({ addMovie }) => {
     const [movieTitle, setMovieTitle] = useState("");
@@ -46,22 +47,20 @@ const MovieForm = ({ addMovie }) => {
     };
 
     return (<form onSubmit={onSubmit}>
-        <input
+        <InputField
             type="text"
             value={movieTitle}
             placeholder="영화제목"
             onChange={(e) => setMovieTitle(e.target.value)}
+            errorMessage={titleError}
         />
-        <br />
-        <div style={{ color: 'red' }}>{titleError}</div>
-        <input
-            type="text"
+        <InputField
+            type="number"
             value={movieYear}
             placeholder="개봉연도"
             onChange={(e) => setmovieYear(e.target.value)}
+            errorMessage={yearError}
         />
-        <br />
-        <div style={{ color: 'red' }}>{yearError}</div>
         <button type="submit">영화추가</button>
     </form>);
 }
